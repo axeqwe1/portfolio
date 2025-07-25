@@ -56,17 +56,15 @@
               {{ monitorRef?.sewerVal.toLocaleString() }}
             </div>
           </div>
+
+          <!--  -->
           <div class="flex flex-row justify-between items-center gap-4">
             <div class="text-sky-500 font-bold text-xl">OT</div>
             <div class="text-red-500 font-bold text-xl">
               {{ monitorRef?.otVal.toLocaleString() }}
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="p-1">
-        <div class="p-[2rem] bg-neutral-50 h-full rounded flex flex-col gap-5">
           <div class="flex flex-row justify-between items-center gap-4">
             <div
               class="w-full h-[50px] flex flex-col justify-center items-center rounded gap-1.5"
@@ -87,7 +85,6 @@
               }}</span>
             </div>
           </div>
-
           <div class="flex flex-col gap-2">
             <div class="flex flex-row justify-between items-center gap-4">
               <div class="text-green-600 font-bold text-xl">AVG SAM:</div>
@@ -112,30 +109,9 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="overflow-auto max-w-[900px] w-full">
-      <div class="md:p-[1rem] bg-neutral-50 h-full rounded">
-        <div class="w-full flex flex-col justify-between items-center h-full">
-          <template v-if="isLoading">
-            <div class="flex w-52 flex-col gap-4">
-              <div class="skeleton h-64 w-full"></div>
-              <div class="skeleton h-8 w-28"></div>
-              <div class="skeleton h-8 w-full"></div>
-              <div class="skeleton h-8 w-full"></div>
-            </div>
-          </template>
-          <template v-else>
-            <SuppervisorTable
-              :datalist="data"
-              :minute-percent="
-                monitorRef?.minutePercent ? monitorRef?.minutePercent : 0
-              "
-            />
-          </template>
-          <div class="flex flex-col font-bold gap-2">
+          <div
+            class="flex flex-col sm:flex-row justify-between sm:items-center font-bold gap-2"
+          >
             <div class="flex flex-col">
               <div class="flex flex-row">
                 <label class="text-lg">Select Line</label>
@@ -186,6 +162,33 @@
               </select>
             </fieldset>
           </div>
+        </div>
+      </div>
+
+      <!-- <div class="p-1">
+
+      </div> -->
+    </div>
+
+    <div class="overflow-auto max-w-[900px] w-full">
+      <div class="md:p-[1rem] bg-neutral-50 h-full rounded">
+        <div class="w-full flex flex-col justify-between items-center h-full">
+          <template v-if="isLoading">
+            <div class="flex w-52 flex-col gap-4">
+              <div class="skeleton h-64 w-full"></div>
+              <div class="skeleton h-8 w-28"></div>
+              <div class="skeleton h-8 w-full"></div>
+              <div class="skeleton h-8 w-full"></div>
+            </div>
+          </template>
+          <template v-else>
+            <SuppervisorTable
+              :datalist="data"
+              :minute-percent="
+                monitorRef?.minutePercent ? monitorRef?.minutePercent : 0
+              "
+            />
+          </template>
         </div>
       </div>
     </div>
