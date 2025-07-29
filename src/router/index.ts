@@ -7,17 +7,13 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
-      path: "/",
+      path: "/", // ✅ ตรงนี้ไม่ต้องใส่ base ซ้ำ
       name: "home",
-      // component: HomeView,
       component: () => import("../views/DashboardView.vue"),
     },
     {
       path: "/about",
       name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("../views/AboutView.vue"),
     },
     {
@@ -54,18 +50,18 @@ router.beforeEach(async (to, from) => {
     // Logic การ redirect
     if (!userStore.isAuthenticated && to.name !== "login") {
       // ใช้ path แทน name เพื่อความชัดเจน
-      return { path: "/login" };
+      return { path: `/login` };
     }
 
     if (to.name === "login" && userStore.isAuthenticated) {
-      return { path: "/dashboard" };
+      return { path: `/dashboard` };
     }
   } catch (err) {
     console.error("Authentication check failed:", err);
 
     // ถ้า request ล้มเหลวและไม่ใช่หน้า login ให้ redirect
     if (to.name !== "login") {
-      return { path: "/login" };
+      return { path: `/login` };
     }
   }
 

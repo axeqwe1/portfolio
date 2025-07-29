@@ -76,7 +76,7 @@ Axios.interceptors.response.use(
         console.error("Refresh token failed:", refreshError);
         // redirect ไป login page
         if (window.location.pathname !== "/login") {
-          window.location.href = "/login";
+          `${import.meta.env.BASE_URL.replace(/\/$/, "")}/login`;
         }
         return Promise.reject(refreshError);
       }

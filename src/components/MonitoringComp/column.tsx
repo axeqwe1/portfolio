@@ -109,7 +109,7 @@ export const columns = [
     header: () => {
       return (
         <div class={`    flex flex-col   items-center rounded w-[50px] `}>
-          <div>order</div>
+          <div>eff%</div>
         </div>
       );
     },
@@ -119,7 +119,7 @@ export const columns = [
         header: () => {
           return (
             <div class={` flex flex-col   items-center rounded w-[50px] `}>
-              <div>eff%</div>
+              <div> order</div>
             </div>
           );
         },
