@@ -3,7 +3,7 @@
     <div
       class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center h-full flex flex-col gap-3 justify-center items-center">
       <div>
-        <div class="p-1 rounded-full bg-gray-300 relative">
+        <div class="p-1 rounded-full bg-gray-300 relative shadow-xl">
           <img
             src="/7498976_33290.jpg"
             alt="Profile"
