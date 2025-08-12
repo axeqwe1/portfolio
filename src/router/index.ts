@@ -7,25 +7,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
-      path: "/", // ✅ ตรงนี้ไม่ต้องใส่ base ซ้ำ
-      name: "home",
-      component: () => import("../views/DashboardView.vue"),
-    },
-    {
       path: "/about",
       name: "about",
       component: () => import("../views/AboutView.vue"),
     },
-    {
-      path: "/dashboard",
-      name: "dashboard",
-      component: () => import("../views/DashboardView.vue"),
-    },
-    {
-      path: "/test",
-      name: "test",
-      component: () => import("../views/TextView.vue"),
-    },
+
     {
       path: "/login",
       name: "login",
@@ -35,36 +21,36 @@ const router = createRouter({
   ],
 });
 
-router.beforeEach(async (to, from) => {
-  const userStore = useUserStore();
+// router.beforeEach(async (to, from) => {
+//   const userStore = useUserStore();
 
-  try {
-    // ตรวจสอบ authentication
-    const res = await me();
+//   try {
+//     // ตรวจสอบ authentication
+//     const res = await me();
 
-    // ถ้าได้ข้อมูลผู้ใช้ให้อัปเดต store
-    if (res?.data) {
-      userStore.setUser(res.data.user);
-    }
+//     // ถ้าได้ข้อมูลผู้ใช้ให้อัปเดต store
+//     if (res?.data) {
+//       userStore.setUser(res.data.user);
+//     }
 
-    // Logic การ redirect
-    if (!userStore.isAuthenticated && to.name !== "login") {
-      // ใช้ path แทน name เพื่อความชัดเจน
-      return { path: `/login` };
-    }
+//     // Logic การ redirect
+//     if (!userStore.isAuthenticated && to.name !== "login") {
+//       // ใช้ path แทน name เพื่อความชัดเจน
+//       return { path: `/login` };
+//     }
 
-    if (to.name === "login" && userStore.isAuthenticated) {
-      return { path: `/dashboard` };
-    }
-  } catch (err) {
-    console.error("Authentication check failed:", err);
+//     if (to.name === "login" && userStore.isAuthenticated) {
+//       return { path: `/dashboard` };
+//     }
+//   } catch (err) {
+//     console.error("Authentication check failed:", err);
 
-    // ถ้า request ล้มเหลวและไม่ใช่หน้า login ให้ redirect
-    if (to.name !== "login") {
-      return { path: `/login` };
-    }
-  }
+//     // ถ้า request ล้มเหลวและไม่ใช่หน้า login ให้ redirect
+//     if (to.name !== "login") {
+//       return { path: `/login` };
+//     }
+//   }
 
-  return true;
-});
+//   return true;
+// });
 export default router;
